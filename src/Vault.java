@@ -57,7 +57,10 @@ public class Vault implements GameElement {
 
 	@Override
 	public void reset() {
-		// TODO Auto-generated method stub
+		myScore = 0; 
+		boostCount = 0; 
+		forceCount = 0; 
+		levitateCount = 0; 
 		
 	}
 
