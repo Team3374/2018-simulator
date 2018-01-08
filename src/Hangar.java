@@ -1,5 +1,3 @@
-import javax.swing.JFrame;
-
 public class Hangar implements GameElement {
 	
 	private int myScore = 0; 

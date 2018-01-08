@@ -1,5 +1,3 @@
-import javax.swing.JFrame;
-
 public interface GameElement  {
 	
 	public void init();

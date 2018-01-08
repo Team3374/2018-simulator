@@ -1,5 +1,3 @@
-import javax.swing.JFrame;
-
 public class Vault implements GameElement {
 	
 	private int myScore = 0; 

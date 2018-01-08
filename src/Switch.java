@@ -1,7 +1,5 @@
 import java.util.Random;
 
-import javax.swing.JFrame;
-
 public class Switch implements GameElement {
 
 	private Side litSide; 
