@@ -1,19 +1,13 @@
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.Console;
 import java.util.ArrayList;
-
-import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
-import javax.swing.JFrame;
 
 public class GameState {
 	
 	private static int runForSeconds = 0;
 	private static ArrayList<GameElement> elems = null;
+	
 		
 	protected static GameState instance = null;
+	
 	private int redScore;
 	private int blueScore; 
 	
@@ -122,7 +116,8 @@ public class GameState {
 		return (Hangar) elems.get(6); 
 	}
 	public static int tenSeconds() {
-		return runForSeconds - 10; 
+		//needs to account for the current tick, so only need to run for 9 ticks
+		return runForSeconds - 9; 
 	}
 	
 	public static int currentTick() {

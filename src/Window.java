@@ -44,6 +44,8 @@ public class Window {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
+		PowerupQueue powerUpQueue = new PowerupQueue();
+		
 		redScore = new JLabel("0");
 		redScore.setBounds(37, 22, 61, 16);
 		redScore.setFont(new Font("Lucida Grande", Font.BOLD, 13));
@@ -158,19 +160,21 @@ public class Window {
 					vaultRedBoost1.setEnabled(false);
 					vaultRedBoost2.setEnabled(false);
 					vaultRedBoost3.setEnabled(false);
+					
+					powerUpQueue.addPowerUp(Team.RED, VaultType.BOOST, GameState.getRedVault().getBoostCount());
 
-					if (GameState.getRedVault().getBoostCount() == 1) {
-						GameState.getRedSwitch().setBoosting(GameState.tenSeconds());
-					}
-
-					if (GameState.getRedVault().getBoostCount() == 2) {
-						GameState.getScale().setBoosting(GameState.tenSeconds());
-					}
-
-					if (GameState.getRedVault().getBoostCount() == 3) {
-						GameState.getScale().setBoosting(GameState.tenSeconds());
-						GameState.getRedSwitch().setBoosting(GameState.tenSeconds());
-					}
+//					if (GameState.getRedVault().getBoostCount() == 1) {
+//						GameState.getRedSwitch().setBoosting(GameState.tenSeconds());
+//					}
+//
+//					if (GameState.getRedVault().getBoostCount() == 2) {
+//						GameState.getScale().setBoosting(GameState.tenSeconds());
+//					}
+//
+//					if (GameState.getRedVault().getBoostCount() == 3) {
+//						GameState.getScale().setBoosting(GameState.tenSeconds());
+//						GameState.getRedSwitch().setBoosting(GameState.tenSeconds());
+//					}
 
 				}
 			});
@@ -240,19 +244,22 @@ public class Window {
 					vaultRedForce1.setEnabled(false);
 					vaultRedForce2.setEnabled(false);
 					vaultRedForce3.setEnabled(false);
+					
+					powerUpQueue.addPowerUp(Team.RED, VaultType.FORCE, GameState.getRedVault().getForceCount());
 
-					if (GameState.getRedVault().getForceCount() == 1) {
-						GameState.getRedSwitch().setForcing(GameState.tenSeconds());
-					}
 
-					if (GameState.getRedVault().getForceCount() == 2) {
-						GameState.getScale().setForcing(GameState.tenSeconds(), GameState.getScale().getRedSide());
-					}
-
-					if (GameState.getRedVault().getForceCount() == 3) {
-						GameState.getScale().setForcing(GameState.tenSeconds(), GameState.getScale().getRedSide());
-						GameState.getRedSwitch().setForcing(GameState.tenSeconds());
-					}
+//					if (GameState.getRedVault().getForceCount() == 1) {
+//						GameState.getRedSwitch().setForcing(GameState.tenSeconds());
+//					}
+//
+//					if (GameState.getRedVault().getForceCount() == 2) {
+//						GameState.getScale().setForcing(GameState.tenSeconds(), GameState.getScale().getRedSide());
+//					}
+//
+//					if (GameState.getRedVault().getForceCount() == 3) {
+//						GameState.getScale().setForcing(GameState.tenSeconds(), GameState.getScale().getRedSide());
+//						GameState.getRedSwitch().setForcing(GameState.tenSeconds());
+//					}
 
 				}
 			});
@@ -440,19 +447,21 @@ public class Window {
 				vaultBlueBoost1.setEnabled(false);
 				vaultBlueBoost2.setEnabled(false);
 				vaultBlueBoost3.setEnabled(false);
+				
+				powerUpQueue.addPowerUp(Team.BLUE, VaultType.BOOST, GameState.getBlueVault().getBoostCount());
 
-				if (GameState.getBlueVault().getBoostCount() == 1) {
-					GameState.getBlueSwitch().setBoosting(GameState.tenSeconds());
-				}
-
-				if (GameState.getBlueVault().getBoostCount() == 2) {
-					GameState.getScale().setBoosting(GameState.tenSeconds());
-				}
-
-				if (GameState.getBlueVault().getBoostCount() == 3) {
-					GameState.getScale().setBoosting(GameState.tenSeconds());
-					GameState.getBlueSwitch().setBoosting(GameState.tenSeconds());
-				}
+//				if (GameState.getBlueVault().getBoostCount() == 1) {
+//					GameState.getBlueSwitch().setBoosting(GameState.tenSeconds());
+//				}
+//
+//				if (GameState.getBlueVault().getBoostCount() == 2) {
+//					GameState.getScale().setBoosting(GameState.tenSeconds());
+//				}
+//
+//				if (GameState.getBlueVault().getBoostCount() == 3) {
+//					GameState.getScale().setBoosting(GameState.tenSeconds());
+//					GameState.getBlueSwitch().setBoosting(GameState.tenSeconds());
+//				}
 
 			}
 		});
@@ -523,18 +532,20 @@ public class Window {
 				vaultBlueForce2.setEnabled(false);
 				vaultBlueForce3.setEnabled(false);
 
-				if (GameState.getBlueVault().getForceCount() == 1) {
-					GameState.getBlueSwitch().setForcing(GameState.tenSeconds());
-				}
-
-				if (GameState.getBlueVault().getForceCount() == 2) {
-					GameState.getScale().setForcing(GameState.tenSeconds(), GameState.getScale().getBlueSide());
-				}
-
-				if (GameState.getBlueVault().getForceCount() == 3) {
-					GameState.getScale().setForcing(GameState.tenSeconds(), GameState.getScale().getBlueSide());
-					GameState.getBlueSwitch().setForcing(GameState.tenSeconds());
-				}
+				powerUpQueue.addPowerUp(Team.BLUE, VaultType.FORCE, GameState.getBlueVault().getForceCount());
+				
+//				if (GameState.getBlueVault().getForceCount() == 1) {
+//					GameState.getBlueSwitch().setForcing(GameState.tenSeconds());
+//				}
+//
+//				if (GameState.getBlueVault().getForceCount() == 2) {
+//					GameState.getScale().setForcing(GameState.tenSeconds(), GameState.getScale().getBlueSide());
+//				}
+//
+//				if (GameState.getBlueVault().getForceCount() == 3) {
+//					GameState.getScale().setForcing(GameState.tenSeconds(), GameState.getScale().getBlueSide());
+//					GameState.getBlueSwitch().setForcing(GameState.tenSeconds());
+//				}
 
 			}
 		});
@@ -671,7 +682,6 @@ public class Window {
 		});
 		btnNewButton.setBounds(260, 326, 117, 29);
 		frame.getContentPane().add(btnNewButton);
-				
 
 	}
 
