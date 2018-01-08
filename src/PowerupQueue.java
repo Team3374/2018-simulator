@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -67,7 +66,13 @@ public class PowerupQueue {
 				}
 			};
 			//-500 is to make sure it starts on the next tick
-			timer.schedule(task, queueCount * 10000 - 1000 * (lastInsert - GameState.currentTick()) - 500);
+			long timeBeforeOpenSlot = (queueCount * 10000 - 1000 * (lastInsert - GameState.currentTick()) - 500);
+			if (timeBeforeOpenSlot < 0) {
+				timeBeforeOpenSlot = 500;
+			}
+			System.out.println(">>> " + timeBeforeOpenSlot);
+			timer.schedule(task, timeBeforeOpenSlot);
+			
 		}
 
 	}
