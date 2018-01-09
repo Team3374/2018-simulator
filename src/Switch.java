@@ -39,6 +39,10 @@ public class Switch implements GameElement {
 	
 	@Override
 	public void tick(GameState s) {
+		if (isForcing()) {
+			myScore++;
+			return;
+		}
 		
 		if (litCount > unlitCount) {
 			if (isBoosting()) {
@@ -49,9 +53,7 @@ public class Switch implements GameElement {
 			}
 		}
 		
-		if (isForcing()) {
-			myScore++;
-		}
+		
 				
 	}
 
