@@ -11,6 +11,26 @@ import javax.swing.JToggleButton;
 import javax.swing.Timer;
 import javax.swing.border.TitledBorder;
 
+class TimerListener implements ActionListener {
+    
+	private JLabel timeRemaining;
+	private JLabel redScore;
+	private JLabel blueScore;
+	
+    public TimerListener(JLabel t, JLabel r, JLabel b) {
+        timeRemaining = t; 
+        redScore = r; 
+        blueScore = b;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+    	GameState.getInstance().tick();
+        timeRemaining.setText(Integer.toString(GameState.getInstance().currentTick()));
+        redScore.setText(Integer.toString(GameState.getInstance().getRedScore()));
+        blueScore.setText(Integer.toString(GameState.getInstance().getBlueScore()));
+    }
+}
+
 public class Window {
 
 	public JFrame frame;
@@ -657,25 +677,27 @@ public class Window {
 		panel_1.setBounds(347, 53, 287, 16);
 		frame.getContentPane().add(panel_1);
 		
-		JButton btnNewButton = new JButton("Start");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btnNewButton.setEnabled(false);
-				Timer SimpleTimer = new Timer(1000, new ActionListener(){
-				    @Override
-				    public void actionPerformed(ActionEvent e) {
-				    	GameState.getInstance().tick();
-				        timeRemaining.setText(Integer.toString(GameState.getInstance().currentTick()));
-				        redScore.setText(Integer.toString(GameState.getInstance().getRedScore()));
-				        blueScore.setText(Integer.toString(GameState.getInstance().getBlueScore()));
-				    }
-				});
-				SimpleTimer.start();
-				
+		JButton startButton = new JButton("Start");
+		
+		Timer SimpleTimer = new Timer(1000, new TimerListener(timeRemaining, redScore, blueScore));
+		
+		startButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {				
+				SimpleTimer.start();				
 			}
 		});
-		btnNewButton.setBounds(260, 326, 117, 29);
-		frame.getContentPane().add(btnNewButton);
+		
+		startButton.setBounds(260, 326, 117, 29);
+		frame.getContentPane().add(startButton);
+		
+		JButton pauseButton = new JButton("Pause");
+		pauseButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SimpleTimer.stop();
+			}
+		});
+		pauseButton.setBounds(392, 326, 117, 29);
+		frame.getContentPane().add(pauseButton);
 
 	}
 
